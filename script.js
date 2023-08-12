@@ -10,6 +10,7 @@ const Game = (() => {
     let currentPlayerIndex;
     let gameOver;
     let board;
+    let round;
 
     let render = () => {
         let boardHTML = "";
@@ -31,6 +32,7 @@ const Game = (() => {
         currentPlayerIndex = 0; // we assign the value here in case the game needs to restart.
         gameOver = false;
         board = ["", "", "", "", "", "", "", "", ""];
+        round = 1;
         render();
     }
 
@@ -39,11 +41,14 @@ const Game = (() => {
         if (!board[index]) { // prevents players from overriding each others moves
             board[index] = players[currentPlayerIndex].marker;
             currentPlayerIndex = currentPlayerIndex == 0 ? 1 : 0;
+            round += 1;
             console.log(currentPlayerIndex);
             render();
 
             if (checkForWin()) {
                 alert(`${players[currentPlayerIndex].name} has won!`)
+            } else if (round === 10) {
+                alert('Tie!');
             }
         }
     }
@@ -70,12 +75,17 @@ const Game = (() => {
         return false;
     }
 
-
     return {
         start
     };
 
-
 })();
 
+
+
+
+
+
 Game.start();
+
+

@@ -1,6 +1,8 @@
 body {
     background-color: #5BA199;
-    margin: 0 auto;
+    margin-top: 10vh;
+    max-width: 400px;
+    margin: auto;
 }
 
 header {
@@ -11,9 +13,9 @@ header {
 }
 
 .board {
-    margin: 0 auto;
-    width: 300px;
-    height: 300px;        
+    box-sizing: border-box;
+    width: 400px;
+    height: 400px;        
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
@@ -32,4 +34,41 @@ header {
     color: #469597;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     user-select: none;
+}
+
+#player-creation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+}
+
+#player-creation input[type="text"] {
+    border: 5px solid #469597;
+    padding: 8px;
+    background-color: #469597;
+    border-radius: 8px;
+    color: #DDBEAA;
+}
+
+#player-creation input[type="text"]:focus {
+    border: 5px solid #469597;
+    outline: none;
+}
+
+#player-creation input[type="text"]::placeholder {
+    color: #DDBEAA;
+}
+
+
+
+
+@media only screen and (max-width: 300px) {
+    header {
+        text-align: center;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 3rem;
+        color: #E5E3E4;
+    }
+
 }
