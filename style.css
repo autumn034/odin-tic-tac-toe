@@ -25,4 +25,11 @@ header {
 
 .board__tile {
     background-color: #DDBEAA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: #469597;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    user-select: none;
 }
