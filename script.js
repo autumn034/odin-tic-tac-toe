@@ -27,8 +27,12 @@ const Game = (() => {
         });
     }
 
-    const start = () => {
-        players = [createPlayer("p1", "X"), createPlayer("p2", "O")];
+    const start = (playerOneName, playerTwoName) => {
+        let boardContainerHTML = document.createElement("div");
+        boardContainerHTML.className = "board";
+        document.body.appendChild(boardContainerHTML);
+
+        players = [createPlayer(playerOneName, "X"), createPlayer(playerTwoName, "O")];
         currentPlayerIndex = 0; // we assign the value here in case the game needs to restart.
         gameOver = false;
         board = ["", "", "", "", "", "", "", "", ""];
@@ -81,11 +85,29 @@ const Game = (() => {
 
 })();
 
+const startBtn = document.querySelector("#start-btn");
+startBtn.addEventListener("click", (e) => {
+    const playerOneName = (document.querySelector("#player-one-name")).value;
+    const playerTwoName = (document.querySelector("#player-two-name")).value;
+
+    // check if name is valid
+    if (playerOneName === "" || playerTwoName === "") {
+        alert("please enter a name");
+        return;
+    }
+
+    document.querySelector("#player-creation").remove();
+    Game.start(playerOneName, playerTwoName);
 
 
 
 
 
-Game.start();
+
+
+
+
+
+});
 
 

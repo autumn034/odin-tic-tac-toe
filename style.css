@@ -40,15 +40,19 @@ header {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 0;
+    justify-content: flex-start;
 }
 
-#player-creation input[type="text"] {
+#player-creation input[type="text"], input[type="text"]:focus, button {
     border: 5px solid #469597;
     padding: 8px;
     background-color: #469597;
     border-radius: 8px;
     color: #DDBEAA;
+    outline: none;
+    margin-top: -5px;
+    margin-bottom: -5px;
+    text-align: center;
 }
 
 #player-creation input[type="text"]:focus {
@@ -58,6 +62,13 @@ header {
 
 #player-creation input[type="text"]::placeholder {
     color: #DDBEAA;
+}
+
+#player-creation button {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 1.2rem;
+    font-weight: 1000;
 }
 
 
