@@ -28,6 +28,11 @@ const Game = (() => {
     }
 
     const start = (playerOneName, playerTwoName) => {
+        if (document.querySelector(".board")) {
+            document.querySelector(".board").remove();
+            document.querySelector("#restart-btn").remove();
+        }
+
         let boardContainerHTML = document.createElement("div");
         boardContainerHTML.className = "board";
         document.body.appendChild(boardContainerHTML);
@@ -42,6 +47,10 @@ const Game = (() => {
 
     const handleClick = (event) => {
         let index = parseInt(event.target.id.split("-")[1]); // tile-1 -> [target, 1] -> 1
+        if (gameOver == true) {
+            return;
+        }
+
         if (!board[index]) { // prevents players from overriding each others moves
             board[index] = players[currentPlayerIndex].marker;
             currentPlayerIndex = currentPlayerIndex == 0 ? 1 : 0;
@@ -51,10 +60,27 @@ const Game = (() => {
 
             if (checkForWin()) {
                 alert(`${players[currentPlayerIndex].name} has won!`)
+                handleGameover();
             } else if (round === 10) {
                 alert('Tie!');
+                handleGameover();
             }
         }
+    }
+
+    const handleGameover = () => {
+        gameOver = true;
+        restartBtn = document.createElement("button");
+        restartBtn.id = "restart-btn";
+        restartBtn.innerText = "Restart";
+
+        restartBtn.addEventListener("click", () => {
+            start(players[0].name, players[1].name);
+        });
+
+
+        document.body.appendChild(restartBtn);
+
     }
 
     const checkForWin = () => {
